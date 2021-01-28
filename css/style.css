@@ -1,0 +1,296 @@
+/* apply a natural box layout model to all elements, but allowing components to change */
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+
+body {
+    background-attachment: fixed;
+    font-size: 1.6rem;
+    min-height: 100vh;
+    background-image: url('../public/img/foodbackgrouns.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+body::after {
+    content: '';
+    position: absolute;
+    top: -10rem;
+    left: 0;
+    width: 100%;
+    height: calc(100% + 10rem);
+    z-index: -1;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+
+/* Contenido editable | editar el contenido en linea directamente */
+
+[contenteditable] {
+    outline: 0px solid transparent;
+}
+
+/* Proyecto carrito */
+
+/* NavMenu */
+
+.conatiner {
+    max-width: 1200px;
+    width: 90%;
+    margin:  0 auto;
+}
+
+.navbar {
+    margin-top: 4rem;
+    background: #ffffff;
+    height: 6rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3rem;
+}
+@media (max-width: 800px) {
+    .navbar {
+        text-align: center;
+        margin-top: 4rem;
+        background: #ffffff;
+        height: 25rem;
+        display: block;
+        padding: 0 3rem;
+    }
+}
+
+.navbar .logo__container {
+    font-size: 4rem;
+}
+
+.menu {
+  display: flex;
+  justify-content: space-between;
+}
+
+.menu .items {
+    display: flex;
+    justify-content: space-between;
+}
+
+@media (max-width: 800px) {
+    .menu {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+      }
+      .menu .items {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+    }
+}
+
+.items li {
+    list-style: none;
+    margin-right: 1.5rem;
+}
+
+.items li:hover a {
+    color: #7e7e7e
+}
+
+
+.items li a {
+    font-size: 2.5rem;
+    text-decoration: none;
+    color: #e3e3e3;
+}
+.items li a.active {
+    color: #000;
+}
+
+.menu .searchicon {
+    padding: 0 1rem;
+    border-left: 2px solid rgb(136, 136, 136);
+    border-right: 2px solid rgb(136, 136, 136);
+}
+
+.menu .canasta-compras {
+    padding-left: 1rem;
+    position: relative;
+}
+
+/* DropDown Canasta */
+
+.canasta-compras .conatiner__canasta_items {
+    height:  auto;
+    border: 1px solid olive;
+    display: none;
+    position: absolute;
+    right: -88%;
+    background-color: #ffffff;
+    padding: 3rem;
+    z-index: 999;
+}
+
+@media (max-width: 800px) {
+    .canasta-compras .conatiner__canasta_items {
+        height:  auto;
+        border: 1px solid olive;
+        display: none;
+        position: absolute;
+        right: -5rem;
+        background-color: #ffffff;
+        padding: 1rem;
+        z-index: 999;
+    }
+}
+
+.canasta-compras .conatiner__canasta_items{
+    min-width: 18rem;
+    text-align: center;
+}
+
+.canasta-compras .conatiner__canasta_items .canasta__content li {
+    list-style: none;
+    margin-right: 1rem;
+}
+.canasta-compras:hover .conatiner__canasta_items{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+}
+.canasta-compras:hover .conatiner__canasta_items .canasta__content {
+    align-items: center;
+    display: flex;
+}
+
+.canasta-compras .conatiner__canasta_items .canasta__content::after {
+    margin: 0 auto;
+    content: '';
+    width: 90%;
+    height: 1px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #616161;
+}
+
+.canasta-compras .canasta__content .item__img img {
+    width: 10rem;
+}
+
+
+/* Product Card */
+
+.cards__container {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    gap: 4rem;
+    margin-top: 9rem;
+}
+
+@media (max-width: 970px) {
+    .cards__container {
+        display: grid;
+        grid-template-columns: auto auto auto;
+        gap: 4rem;
+        margin-top: 9rem;
+    }
+}
+@media (max-width: 720px) {
+    .cards__container {
+        display: grid;
+        grid-template-columns: auto auto;
+        margin-top: 9rem;
+        justify-content: center;
+    }
+}
+@media (max-width: 450px) {
+    .cards__container {
+        display: grid;
+        grid-template-columns: auto;
+        margin-top: 9rem;
+        justify-content: center;
+    }
+}
+
+.card__product{
+    font-family: 'Open Sans', sans-serif;
+    background-color: #ffffff;
+    width: 200px;
+    height: 280px;
+    text-align: center;
+    border-radius: 5px;
+    margin: 5rem 0rem;
+}
+
+.card__product .card__img img{
+    width: 85%;
+    margin-top: -9rem;
+    -webkit-box-shadow: inset 0px -2px 5px 35px rgba(255,255,255,1);
+    -moz-box-shadow: inset 0px -2px 5px 35px rgba(255,255,255,1);
+    box-shadow: inset 0px -2px 5px 35px rgba(255,255,255,1);
+    clip-path: circle(50% at 50% 50%);
+
+    
+}
+
+.card__category {
+    padding: .5rem;
+}
+
+.card__price {
+    padding: .5rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    display:  flex;
+    justify-content: center;
+}
+
+.card__details {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    align-content: center;
+}
+.card__details  a {
+    text-decoration: none;
+    color: #7e7e7e;
+}
+
+.card__details  a:hover{
+    color: #363636;
+}
+
+.add--carrito {
+    width: 24px;
+    height: 24px;
+    background-image: url(../public/img/iconmonstr-basket-3.svg);
+    transition: transform .4s, ease-in-out linear;
+}
+
+.add--carrito:hover {
+    transform:scale(1.5)
+}
+
+
+.cursor--pointer {
+    cursor: pointer;
+}
+.delete-btn {
+    color: red;
+    font-size: 2.5rem;
+}
