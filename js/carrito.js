@@ -1,6 +1,5 @@
 const canastaContaier = document.querySelector('#contenedor-productos-carrito');
 const canasta = document.querySelector('.cards__container');
-const noItems = document.querySelector('#no-items');
 
 let canastaCompras = [];
 
